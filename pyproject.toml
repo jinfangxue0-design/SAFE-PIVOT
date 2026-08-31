@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "safe-pivot"
+version = "0.1.0"
+description = "Risk-controlled arbitration between flat and evidence-grounded answers"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+  "numpy>=1.26",
+  "openai>=1.40",
+  "pandas>=2.1",
+  "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+safe-pivot-verifier = "safe_pivot.verifier:main"
+safe-pivot-basic = "safe_pivot.cli:basic_main"
+safe-pivot-cgc = "safe_pivot.cli:cgc_main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
